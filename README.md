@@ -4,7 +4,7 @@ Social Orcid
 About
 =====
 
-Social Orcid is a plugin for [Python Social Auth](python-social-auth_) to add OAuth2
+Social Orcid is a plugin for [Python Social Auth](https://github.com/omab/python-social-auth) to add OAuth2
 support for [Orcid's](http://orcid.org) [identity provider service](https://members.orcid.org/api/oauth2).
 
 Installation
@@ -76,11 +76,10 @@ Dependencies
 License
 =======
 
-Developed by Matthew Laird (@lairdm), ``social_orcid`` is protected by GPL v3 license. Check the LICENSE_ for
-details.
+Developed by Matthew Laird (https://github.com/lairdm/), ``social_orcid`` is protected by GPL v3 license. Check the (LICENSE) for details.
 
 ``python-social-auth`` and all it's components are protected by their relative
-license, please see the individual repositories for details.
+license, [please see](https://github.com/omab/python-social-auth) the individual repositories for details.
 
 Orcid is trademarked and protected by it's usage guidelines, please consult
 their [branding and guidelines](https://orcid.org/trademark-and-id-display-guidelines) page for more details.
