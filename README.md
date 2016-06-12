@@ -70,13 +70,13 @@ may not be useful.
 Dependencies
 ============
 
-- python-social-auth_
+- [python-social-auth](https://github.com/omab/python-social-auth)
 - an Orcid [API key](http://support.orcid.org/knowledgebase/articles/116739-register-a-client-application)
 
 License
 =======
 
-Developed by Matthew Laird (https://github.com/lairdm/), ``social_orcid`` is protected by GPL v3 license. Check the (LICENSE) for details.
+Developed by [Matthew Laird](https://github.com/lairdm/), ``social_orcid`` is protected by GPL v3 license. Check the (LICENSE) for details.
 
 ``python-social-auth`` and all it's components are protected by their relative
 license, [please see](https://github.com/omab/python-social-auth) the individual repositories for details.
