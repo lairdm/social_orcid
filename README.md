@@ -76,7 +76,7 @@ Dependencies
 License
 =======
 
-Developed by [Matthew Laird](https://github.com/lairdm/), ``social_orcid`` is protected by GPL v3 license. Check the (LICENSE) for details.
+Developed by [Matthew Laird](https://github.com/lairdm/), ``social_orcid`` is protected by GPL v3 license. Check the [License](LICENSE) for details.
 
 ``python-social-auth`` and all it's components are protected by their relative
 license, [please see](https://github.com/omab/python-social-auth) the individual repositories for details.
