@@ -7,6 +7,10 @@ About
 Social Orcid is a plugin for [Python Social Auth](https://github.com/omab/python-social-auth) to add OAuth2
 support for [Orcid's](http://orcid.org) [identity provider service](https://members.orcid.org/api/oauth2).
 
+While Python Social Auth supports multiple backends, this extension was developed specifically for
+a need in Django. It may work with the other backends supported by Python Social Auth, but those
+have no specifically been tested. I welcome any feedback and pull requests for improvement.
+
 Installation
 ============
 
@@ -45,8 +49,11 @@ request access to the live authentication server and uncomment the three lines i
 ```
 while commenting out the corresponding three lines pointing at the sandbox server.
 
+Debugging
+=========
+
 SSL issues
-==========
+----------
 
 Some older versions of python are linked to an OpenSSL version that doesn't understand SNI. This can
 create issues with authenticating against providers. The solution is to either upgrade to a newer
@@ -57,6 +64,32 @@ in your application add:
 import urllib3.contrib.pyopenssl
 urllib3.contrib.pyopenssl.inject_into_urllib3()
 ```
+
+need more than 1 value to unpack
+--------------------------------
+
+If you receive the error ``need more than 1 value to unpack`` during the authentication phase,
+you may need to add the following to your configuration:
+
+```
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    #'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)
+```
+
+The default pipeline name found by Python Social Auth (at least in my Django setup) is incorrectly
+just my app name. After manually setting the auth pipeline things began to work. Alter the auth pipeline
+to whatever components are appropriate for your setup (email authentication, etc), but the above is the
+default authentication pipeline in Python Social Auth.
 
 Limitations
 ===========
