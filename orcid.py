@@ -25,12 +25,25 @@ class OrcidOAuth2(BaseOAuth2):
         return params
 
     def get_user_details(self, response):
+        """Find the names in the response if they exist, annoying deep hash"""
+        if response.get('orcid-profile', {}).get('orcid-bio', {}).get('personal-details', None):
+            personal_details = response.get('orcid-profile', {}).get('orcid-bio', {}).get('personal-details', {})
+            if personal_details.get('family-name', {}).get('value', None):
+                last_name = personal_details.get('family-name', {}).get('value', '')
+            else:
+                last_name = ''
+
+            if personal_details.get('given-names', {}).get('value', None):
+                first_name = personal_details.get('given-names', {}).get('value', '')
+            else:
+                first_name = ''
+
         """Return user details from Orcid account"""
         return {'username': response.get('orcid'),
                 'email': response.get('email') or '',
                 'fullname': response.get('name'),
-                'first_name': response.get('first_name'),
-                'last_name': response.get('last_name')
+                'first_name': first_name,
+                'last_name': last_name
         }
 
     def extra_data(self, user, uid, response, details=None, *args, **kwargs):
